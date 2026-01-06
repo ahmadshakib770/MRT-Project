@@ -1,0 +1,215 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, rgb(15 23 42), rgb(30 41 59), rgb(15 23 42));
+  color: rgb(241 245 249);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-title {
+  font-size: 24px;
+  color: rgb(241 245 249);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 12px 0;
+  cursor: pointer;
+  color: rgb(203 213 225);
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.sidebar ul li:hover {
+  color: rgb(241 245 249);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.language {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: rgb(241 245 249);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+  background: rgb(225 29 72);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgb(190 18 60);
+}
+
+.form-section {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgb(30 58 138); /* dark blue border */
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.form-section h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827; /* black-ish heading */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-wrapper label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #111827; /* black labels */
+  font-size: 14px;
+}
+
+.form-wrapper input,
+.form-wrapper textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 5px;
+  border-radius: 8px;
+  background: #ffffff; /* white inputs for strong contrast */
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #111827; /* black text in inputs */
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-wrapper input:focus,
+.form-wrapper textarea:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: rgb(30 58 138); /* dark blue focus */
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.15);
+}
+
+.question-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.submit-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background: rgb(16 185 129);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: rgb(5 150 105);
+}
+
+/* Remove conflicting duplicate .form-section override */
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+
+  .topbar {
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .form-section {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .form-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-wrapper label {
+    margin-top: 14px;
+    font-size: 13px;
+  }
+
+  .form-wrapper input,
+  .form-wrapper textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .question-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .submit-btn {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+}

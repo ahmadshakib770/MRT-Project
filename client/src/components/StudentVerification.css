@@ -1,0 +1,192 @@
+.student-verification-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, rgb(15 23 42), rgb(30 41 59), rgb(15 23 42));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.student-verification-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  position: relative;
+}
+
+.back-button {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+  color: rgb(148 163 184);
+}
+
+.back-button:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgb(203 213 225);
+}
+
+.student-verification-card h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgb(241 245 249);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.info-text {
+  background: #dbeafe;
+  color: #667eea ;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.upload-section {
+  margin-bottom: 25px;
+}
+
+.upload-label {
+  display: block;
+  cursor: pointer;
+}
+
+.upload-box {
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.05);
+}
+
+.upload-box:hover {
+  border-color: rgb(52 211 153);
+  background: rgba(255,255,255,0.1);
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-icon {
+  font-size: 48px;
+}
+
+.upload-placeholder p {
+  color: rgb(148 163 184);
+  font-weight: 500;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.file-input {
+  display: none;
+}
+
+.submit-button {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-message {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 12px;
+}
+
+.status-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.status-message h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.status-message p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.status-message.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-message.verified {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.expiry-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #059669;
+  font-size: 14px;
+}
+
+.expiry-info strong {
+  color: #047857;
+  font-size: 16px;
+}
+
+.status-message.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.retry-button {
+  margin-top: 20px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.retry-button:hover {
+  background: #b91c1c;
+}
