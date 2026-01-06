@@ -2,24 +2,14 @@
   "version": 2,
   "installCommand": "echo 'Skipping root install'",
   "buildCommand": "npm install --legacy-peer-deps --force && npm run build && npm install --prefix ../server",
-  "builds": [
+  "rewrites": [
     {
-      "src": "server/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server/index.js"
+      "source": "/api/(.*)",
+      "destination": "/api"
     },
     {
-      "src": "/uploads/(.*)",
-      "dest": "server/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "client/build/$1"
+      "source": "/(.*)",
+      "destination": "/client/build/$1"
     }
   ],
   "outputDirectory": "build"
