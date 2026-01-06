@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       // First, try admin login
-      const adminResponse = await fetchWithFallback("https://cse471-project-backend-51jt.onrender.com/api/admin/login", {
+      const adminResponse = await fetchWithFallback("/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Login = () => {
       }
 
       // If not admin, try regular user login
-      const response = await fetchWithFallback("https://cse471-project-backend-51jt.onrender.com/api/users/login", {
+      const response = await fetchWithFallback("/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,8 +87,8 @@ const Login = () => {
     try {
       if (!googleUser || !googleUser._id) return alert(t("Missing user id"));
 
-      const response = await fetch(
-        `https://cse471-project-backend-51jt.onrender.com/api/users/update-dob/${googleUser._id}`,
+      const response = await fetchWithFallback(
+        `/api/users/update-dob/${googleUser._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -119,7 +119,7 @@ const Login = () => {
       const decoded = jwtDecode(credentialResponse.credential);
 
       const checkRes = await fetchWithFallback(
-        "https://cse471-project-backend-51jt.onrender.com/api/users/google-login",
+        "/api/users/google-login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -164,7 +164,7 @@ const Login = () => {
       };
 
       const response = await fetchWithFallback(
-        "https://cse471-project-backend-51jt.onrender.com/api/users/register",
+        "/api/users/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
