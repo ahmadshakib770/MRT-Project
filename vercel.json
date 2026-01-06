@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm run build",
-  "installCommand": "npm install --prefix=. && npm install --prefix=client && npm install --prefix=server",
+  "buildCommand": "cd client && npm install && npm run build",
+  "installCommand": "npm install --prefix=server",
   "builds": [
     {
       "src": "server/index.js",
