@@ -9,7 +9,7 @@
     "mongoose": "^9.0.1",
     "multer": "^2.0.2",
     "stripe": "^17.7.0",
-    "cloudinary": "^2.0.0",
+    "cloudinary": "^1.41.3",
     "multer-storage-cloudinary": "^4.0.0"
   }
 }
