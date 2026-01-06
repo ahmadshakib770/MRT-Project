@@ -57,7 +57,8 @@ const createLostItem = async (req, res) => {
 
     // Handle photos
     if (req.files?.length) {
-      item.photos = req.files.map((f) => `/uploads/${f.filename}`);
+      // Cloudinary returns 'path' property with full URL, local storage uses filename
+      item.photos = req.files.map((f) => f.path || `/uploads/${f.filename}`);
     }
 
     const savedItem = await item.save();

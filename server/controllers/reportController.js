@@ -4,7 +4,8 @@ const User = require("../models/User");
 // Helper to map uploaded files to public paths
 const mapFiles = (files) => {
   if (!files) return [];
-  return files.map((f) => "/uploads/" + f.filename);
+  // Cloudinary returns 'path' property with full URL, local storage uses filename
+  return files.map((f) => f.path || `/uploads/${f.filename}`);
 };
 
 const submitAppBug = async (req, res) => {

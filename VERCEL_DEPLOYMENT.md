@@ -19,6 +19,12 @@ After importing your project to Vercel, you need to add these environment variab
 - `NODE_ENV` - Set to `production`
 - `PORT` - Optional (Vercel handles this automatically)
 
+### Cloudinary Configuration (Required for File Uploads):
+Get these from https://cloudinary.com (free account):
+- `CLOUDINARY_CLOUD_NAME` - Your Cloudinary cloud name
+- `CLOUDINARY_API_KEY` - Your Cloudinary API key
+- `CLOUDINARY_API_SECRET` - Your Cloudinary API secret
+
 ### Additional Variables (if used in your project):
 - `STRIPE_SECRET_KEY` - Your Stripe secret key
 - `JWT_SECRET` - JWT secret for authentication
@@ -53,12 +59,34 @@ vercel
 # Add environment variables
 vercel env add MONGO_URI
 vercel env add NODE_ENV
+vercel env add CLOUDINARY_CLOUD_NAME
+vercel env add CLOUDINARY_API_KEY
+vercel env add CLOUDINARY_API_SECRET
 
 # Deploy to production
 vercel --prod
 ```
 
 ## Step 4: Post-Deployment Configuration
+
+### Set Up Cloudinary for File Uploads (Important!)
+
+This project uses file uploads for:
+- Lost & Found item photos
+- Advertisement images
+- Student verification documents
+- Bug report screenshots
+- Station hazard photos
+
+**Cloudinary Setup (Free & Required):**
+1. Create account at https://cloudinary.com (free tier: 25GB storage, 25GB bandwidth/month)
+2. Get your credentials from Dashboard:
+   - Cloud Name
+   - API Key
+   - API Secret
+3. Add these to Vercel environment variables (see Step 2)
+
+Without Cloudinary, file upload features won't work in production!
 
 ### Update CORS Settings
 If you need to allow specific domains, update the CORS configuration in `server/index.js`:
@@ -68,13 +96,6 @@ app.use(cors({
   credentials: true
 }));
 ```
-
-### File Uploads Consideration
-⚠️ **Important**: Vercel's serverless functions have limited storage. File uploads in the `/uploads` directory won't persist between deployments.
-
-**Solutions:**
-1. Use cloud storage (AWS S3, Cloudinary, etc.) - Recommended
-2. Use Vercel Blob Storage
 
 ## Step 5: Verify Deployment
 
@@ -102,9 +123,10 @@ Test your endpoints:
 - Whitelist Vercel's IP addresses in MongoDB Atlas (or use 0.0.0.0/0 for all IPs)
 - Verify MONGO_URI is correct
 
-### File Upload Issues
-- Implement cloud storage solution (recommended)
-- Or use Vercel Blob: https://vercel.com/docs/storage/vercel-blob
+### Cloudinary/File Upload Issues
+- Ensure all 3 Cloudinary environment variables are set correctly
+- Check Cloudinary dashboard for usage limits
+- Verify API credentials are active
 
 ## Continuous Deployment
 

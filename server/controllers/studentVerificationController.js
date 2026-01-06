@@ -9,8 +9,9 @@ exports.submitStudentVerification = async (req, res) => {
       return res.status(400).json({ message: "Both student ID card and NID/Birth certificate are required" });
     }
 
-    const studentIdCard = `/uploads/${req.files[0].filename}`;
-    const studentSecondDocument = `/uploads/${req.files[1].filename}`;
+    // Cloudinary returns 'path' property with full URL, local storage uses filename
+    const studentIdCard = req.files[0].path || `/uploads/${req.files[0].filename}`;
+    const studentSecondDocument = req.files[1].path || `/uploads/${req.files[1].filename}`;
 
     const user = await User.findByIdAndUpdate(
       userId,

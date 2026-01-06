@@ -44,7 +44,8 @@ const createAd = async (req, res) => {
       return res.status(400).json({ message: "Image is required" });
     }
 
-    const imageUrl = `/uploads/${req.file.filename}`;
+    // Cloudinary returns 'path' property with full URL, local storage uses filename
+    const imageUrl = req.file.path || `/uploads/${req.file.filename}`;
 
     const newAd = new Ad({
       title,
@@ -80,12 +81,15 @@ const updateAd = async (req, res) => {
 
     // Update image if new file uploaded
     if (req.file) {
-      // Delete old image
-      const oldImagePath = path.join(__dirname, "..", ad.imageUrl);
-      if (fs.existsSync(oldImagePath)) {
-        fs.unlinkSync(oldImagePath);
+      // Delete old image only if it's a local file (not a Cloudinary URL)
+      if (ad.imageUrl && ad.imageUrl.startsWith('/uploads/')) {
+        const oldImagePath = path.join(__dirname, "..", ad.imageUrl);
+        if (fs.existsSync(oldImagePath)) {
+          fs.unlinkSync(oldImagePath);
+        }
       }
-      ad.imageUrl = `/uploads/${req.file.filename}`;
+      // Cloudinary returns 'path' property with full URL, local storage uses filename
+      ad.imageUrl = req.file.path || `/uploads/${req.file.filename}`;
     }
 
     await ad.save();
