@@ -1,16 +1,17 @@
 {
   "version": 2,
   "installCommand": "echo 'Skipping root install'",
-  "buildCommand": "npm install --legacy-peer-deps --force && npm run build && npm install --prefix ../server",
+  "buildCommand": "npm install --legacy-peer-deps --force && npm run build && npm install --prefix ../api",
   "outputDirectory": "build",
-  "routes": [
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/api/:path*",
+      "destination": "/api"
     }
   ]
 }
