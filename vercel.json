@@ -22,5 +22,5 @@
       "dest": "client/build/$1"
     }
   ],
-  "outputDirectory": "client/build"
+  "outputDirectory": "build"
 }
