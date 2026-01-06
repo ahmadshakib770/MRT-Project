@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd client && npm install && npm run build && cd ../server && npm install",
+  "installCommand": "echo 'Skipping root install'",
+  "buildCommand": "cd client && npm install --legacy-peer-deps && npm run build && cd ../server && npm install",
   "builds": [
     {
       "src": "server/index.js",
